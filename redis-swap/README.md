@@ -1,5 +1,9 @@
 # Redis Swap
 
+## Pre-reqs
+1. AWS CLI is installed and configured.
+1. terraform is installed
+
 ## To Provision the Infrastructure:
 1. `cd terraform`
 1. `terraform init`
