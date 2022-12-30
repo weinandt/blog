@@ -13,6 +13,10 @@
 1. `terraform init`
 1. `terraform apply`
 
+## To Run Ansible
+1. Add the public DNS for the instance to the ansible/hosts file.
+2. From the ansible directory: `ansible-playbook -i hosts update.yml`
+
 ## To SSH into the instance
 1. `ssh -i infrastructure/ssh-keys/id_rsa -o "UserKnownHostsFile=/dev/null" ubuntu@<publicDnsHere>`
 
