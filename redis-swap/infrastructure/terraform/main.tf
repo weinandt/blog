@@ -10,13 +10,13 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-2"
+  region = "us-east-2"
 }
 
 resource "aws_instance" "redis_swap" {
-  ami           = "ami-0283a57753b18025b" # 64 bit AMD Ubuntu 22.04 in us-east-2
-  instance_type = "t2.micro"
-
+  ami                = "ami-0283a57753b18025b" # 64 bit AMD Ubuntu 22.04 in us-east-2
+  instance_type      = "t2.micro"
+  
   tags = {
     Name = "RedisSwapInstance"
   }

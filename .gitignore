@@ -4,3 +4,6 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+# ssh keys
+id_rsa*
