@@ -13,6 +13,8 @@
 1. `terraform init`
 1. `terraform apply`
 
+## To SSH into the instance
+1. `ssh -i infrastructure/ssh-keys/id_rsa -o "UserKnownHostsFile=/dev/null" ubuntu@<publicDnsHere>`
 
 ## To clean up
 1. `cd terraform`
