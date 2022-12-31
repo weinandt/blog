@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+  - name: Update and upgrade apt packages
+    ansible.builtin.apt:
+      upgrade: yes
+      update_cache: yes
+  
+  - name: Install redis server
+    ansible.builtin.apt:
+      name: redis-server
+
+  - name: Start redis
+    ansible.builtin.service:
+      name: redis-server
+      enabled: true # Start the service on boot.
+      state: started # Idempotent, won't run if already started.

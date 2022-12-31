@@ -1,6 +1,6 @@
 [myservers]
 # Put server DNS under here.
-ec2-3-139-103-60.us-east-2.compute.amazonaws.com
+ec2-3-22-249-13.us-east-2.compute.amazonaws.com
 
 [myservers:vars]
 ansible_ssh_user=ubuntu

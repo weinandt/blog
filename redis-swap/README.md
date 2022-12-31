@@ -18,7 +18,7 @@
 2. From the ansible directory: `ansible-playbook -i hosts update.yml`
 
 ## To SSH into the instance
-1. `ssh -i infrastructure/ssh-keys/id_rsa -o "UserKnownHostsFile=/dev/null" ubuntu@<publicDnsHere>`
+1. `ssh -i infrastructure/ssh-keys/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@<publicDnsHere>`
 
 ## To clean up
 1. `cd terraform`
