@@ -20,6 +20,21 @@
 ## To SSH into the instance
 1. `ssh -i infrastructure/ssh-keys/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@<publicDnsHere>`
 
+## Allocate swap
+1. `df -h`
+    - Make sure you have enough disk space.
+1. `sudo fallocate -l 1G /swapfile`
+1. `sudo chmod 600 /swapfile`
+1. `sudo mkswap /swapfile`
+1. `sudo swapon /swapfile`
+1. `free -h`
+
+## To populate redis with a bunch of data
+1. `VERY_LONG_STRING=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
+2. `for i in {1..1000000}; do echo "SET $i $VERY_LONG_STRING" >> bulk.txt ; done`
+3. `cat bulk.txt | redis-cli --pipe`
+
+
 ## To clean up
 1. `cd terraform`
 1. `terraform destory`
