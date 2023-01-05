@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  
+  # TODO: check if swap is already enabled.
+  tasks:
+  - name: Create swap file
+    command: fallocate -l 3G /swapfile # TODO: make swap size configurable as a variable.
+
+  - name: Make swap file R/W only
+    command: chmod 600 /swapfile
+  
+  - name: Format the file as swap
+    command: mkswap /swapfile
+
+  - name: Enable swapping
+    command: swapon /swapfile
